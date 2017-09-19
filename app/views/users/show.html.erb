@@ -2,14 +2,14 @@
 
 <ul>
   <% @user.friendships.each do |friendship| %>
-    <li><%= friendship.friend.name %></li>
+    <li><%= friendship.friend.name %> - <%= link_to "Remove friend", friendship, method: :delete %></li>
   <% end %>
 </ul>
 
 <h2>Friended by:</h2>
 <ul>
   <% @user.inverse_friends.each do |user| %>
-    <li><%= user.name %></li>
+    <li><%= user.name %></lik>
   <% end %>
 </ul>
 <p><%= link_to "Back to users list", users_path %></p>
