@@ -1,1 +1,15 @@
-<h1>Show</h1>
+<h1>Friends</h1>
+
+<ul>
+  <% @user.friendships.each do |friendship| %>
+    <li><%= friendship.friend.name %></li>
+  <% end %>
+</ul>
+
+<h2>Friended by:</h2>
+<ul>
+  <% @user.inverse_friends.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>
+<p><%= link_to "Back to users list", users_path %></p>
