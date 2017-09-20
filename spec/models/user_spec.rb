@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
     expect(user2).to be_valid
   end
 
-  it {should have_many(:friends).through(:friendships)}   
+  it {should have_many(:friends).through(:friendships)}
   it {should have_many :friendships}
+  it {should have_many :availability}
 end
