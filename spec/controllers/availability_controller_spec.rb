@@ -12,4 +12,13 @@ RSpec.describe AvailabilityController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+    it "removes an availability" do
+      availability = subject.current_user.availability.create!(available_hour: 5)
+      expect {
+        delete :destroy, params: {id: availability.id}
+      }.to change(Availability, :count).by(-1)
+    end
+  end
+
 end

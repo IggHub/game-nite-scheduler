@@ -4,7 +4,6 @@ RSpec.describe FriendshipsController, type: :controller do
   login_user
 
   before :each do
-    current_user = FactoryGirl.create(:user)
     @friend1 = FactoryGirl.create(:user)
   end
 
@@ -18,10 +17,10 @@ RSpec.describe FriendshipsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "removes a friend =(" do
-      friendship = user.friendships.create!(friend_id: @friend1.id)
+      friendship = subject.current_user.friendships.create!(friend_id: @friend1.id)
       expect {
-        delete :destroy, id: friendship.id
-      }.to change(Friendship, :count).by(1)
+        delete :destroy, params: {id: friendship.id}
+      }.to change(Friendship, :count).by(-1)
     end
   end
 
