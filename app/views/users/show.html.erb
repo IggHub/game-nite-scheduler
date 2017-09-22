@@ -18,7 +18,7 @@
       <%= available_date %>:
       <ul>
         <% show_available_hour(@user)[available_date].each do |d| %>
-          <li><%= d.available_hour %></li>
+          <li><%= d.available_hour %> - <%= link_to "Remove hour", availability_path(d), method: :delete %></li>
         <% end %>
       </ul>
     </li>
@@ -28,7 +28,21 @@
 <h2>Friends</h2>
 <ul>
   <% @user.friendships.each do |friendship| %>
-    <li><%= friendship.friend.name %> - <%= link_to "Remove friend", friendship, method: :delete %></li>
+    <li>
+      <%= friendship.friend.name %> - <%= link_to "Remove friend", friendship, method: :delete %>
+      <ul>
+        <% show_available_hour(friendship.friend).keys.each do |available_date, index| %>
+          <li>
+            <%= available_date %>
+            <ul>
+              <% show_available_hour(friendship.friend)[available_date].each do |d| %>
+                <li><%= d.available_hour %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </li>
   <% end %>
 </ul>
 
