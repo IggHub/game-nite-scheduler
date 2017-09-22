@@ -3,10 +3,10 @@ class AvailabilityController < ApplicationController
     @availability = current_user.availability.build(available_on: Date.today, available_hour: params[:available_hour])
     if @availability.save
       flash[:notice] = "New availability added!"
-      redirect_to root_url
+      redirect_to current_user
     else
       flash[:error] = "Error adding availability"
-      redirect_to root_url
+      redirect_to current_user
     end
   end
 

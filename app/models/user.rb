@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :inverse_friends, through: :inverse_friendships, source: :user
   has_many :availability
   validates_presence_of :name, :email, :phone
+
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%") 
+  end
 end

@@ -5,7 +5,13 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @availabilities = current_user.availability
+    @users = User.all
+    if params[:search]
+      @users = User.search(params[:search]).order("created_at DESC")
+    else
+      @users = User.order("created_at DESC")
+    end
+    #@availabilities = current_user.availability
   end
 
   def create_availability
