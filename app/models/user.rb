@@ -14,7 +14,4 @@ class User < ApplicationRecord
   #https://stackoverflow.com/questions/26452245/how-can-i-display-all-users-except-current-user-and-current-users-friends-in-ru
   scope :all_except, -> (user){ where.not(id: user) }
 
-  def self.search(search)
-    where("name LIKE ?", "%#{search}%")
-  end
 end

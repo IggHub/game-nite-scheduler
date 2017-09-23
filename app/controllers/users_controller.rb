@@ -5,14 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @users = User.all
+    @users = User.all_except(current_user).order(:name)
     @availabilities = @user.availability.group_by(&:available_on)
-    if params[:search]
-      @users = User.search(params[:search]).order("created_at DESC")
-    else
-      @users = User.order("created_at DESC")
-    end
-    #@availabilities = current_user.availability
   end
 
   def create_availability
