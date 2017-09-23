@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all_except(current_user).order(:name)
   end
 
   def show
     @user = current_user
     @users = User.all
+    @availabilities = @user.availability.group_by(&:available_on)
     if params[:search]
       @users = User.search(params[:search]).order("created_at DESC")
     else

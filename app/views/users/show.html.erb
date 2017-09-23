@@ -13,11 +13,11 @@
 <hr />
 
 <ul>
-  <% show_available_hour(@user).keys.each do |available_date, index| %>
+  <% @availabilities.keys.each do |available_date, index| %>
     <li>
       <%= available_date %>:
       <ul>
-        <% show_available_hour(@user)[available_date].each do |d| %>
+        <% @availabilities[available_date].each do |d| %>
           <li><%= d.available_hour %> - <%= link_to "Remove hour", availability_path(d), method: :delete %></li>
         <% end %>
       </ul>
