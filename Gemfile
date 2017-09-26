@@ -25,6 +25,8 @@ gem 'webpacker', '~> 3.0'
 
 gem 'react_on_rails', '~> 9.0.1'
 
+gem 'foreman'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.6'
@@ -45,3 +47,5 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby
