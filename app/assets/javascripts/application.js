@@ -16,6 +16,9 @@
 //= require turbolinks
 //= require_tree .
 
+var dateToday = new Date();
+var dateTodayString = dateToday.toDateString();
+
 function myFunction() {
     // Declare variables
     var input, filter, ul, li, a, i;

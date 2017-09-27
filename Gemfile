@@ -13,7 +13,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 
-
+#Add-ons
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
@@ -21,10 +21,9 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'faker'
 
+# for react_on_rails *
 gem 'webpacker', '~> 3.0'
-
 gem 'react_on_rails', '~> 9.0.1'
-
 gem 'foreman'
 
 group :development, :test do

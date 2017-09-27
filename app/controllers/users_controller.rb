@@ -7,6 +7,13 @@ class UsersController < ApplicationController
     @user = current_user
     @users = User.all_except(current_user).order(:name)
     @availabilities = @user.availability.group_by(&:available_on)
+
+    respond_to do |format|
+      format.html {}
+      format.json {
+        render json: @availabilities
+      }
+    end
   end
 
   def create_availability
