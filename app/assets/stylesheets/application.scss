@@ -16,6 +16,7 @@ body {
   width: 1372px;
   font-family: 'Roboto', sans-serif;
   font-size: 1.6em;
+  background: $grey-background;
 }
 
 /* fixed header */
@@ -43,52 +44,23 @@ body {
 }
 /* end header */
 
-/* main-layout */
 .main-container {
-  background: red;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  margin-top: 50px;
 }
 
-.main-container {
-  color: $mid-grey;
-  margin: 15px;
-}
-.search-container {
-  margin: 15px;
-}
-
-.availability-container {
-  background: red;
-
-  .time-container {
-    height: 100px;
-    margin-top: 50px;
-  }
-
-  .hours {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+.schedule-container {
+  background: #FFF;
+  overflow: auto;
+  white-space: nowrap;
 
   .each-hour {
-    flex: 0 0 100px;
-    margin: 30px;
-    border-radius: 10px;
+    display: inline-block;
+    margin: 25px;
     width: 100px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 50px;
+    background: tomato;
   }
 }
-
-/* end card */
-
 
 
 #myInput {

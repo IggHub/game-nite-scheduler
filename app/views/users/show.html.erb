@@ -1,25 +1,20 @@
 <div class="main-container">
-  <div class="search-container"><input /></div>
-  <div class="date-container"><%= Time.now.strftime("%a, %b %d %Y") %></div>
-  <div class="availability-container">
+  <div class="form-group">
+    <input type="text" class="form-control" />
+  </div>
+  <div class="schedule-container">
+    <div class="user-hours">
+      <% (1..24).to_a.map do |el| %>
+        <div class="each-hour"><%= el.to_s + ":00" %></div>
+      <% end %>
+    </div>
 
 
   </div>
 
-
-    <!--  <div class="time-container">
-        <div class="hours">
-          <% (1..24).to_a.map do |el| %>
-            <div class="each-hour"><%= el.to_s + ":00" %></div>
-          <% end %>
-        </div>
-      </div>
-    -->
-
 </div>
 
-
-<h2>Availability <i className="fa fa-angle-left" aria-hidden="true"></i></h2>
+<h2>Availability <%= user_availability_hours %></h2>
 
 <form method="post" action="/availability">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
