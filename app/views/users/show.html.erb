@@ -1,26 +1,21 @@
-<div class="card-container">
-  <div class="card-header">
-    <div><i className="fa fa-angle-left" aria-hidden="true"></i></div>
-    <div class="card-header-date"><%= Time.now.strftime("%a, %b %d %Y") %></div>
-    <div><i className="fa fa-angle-right" aria-hidden="true"></i></div>
+<div class="main-container">
+  <div class="search-container"><input /></div>
+  <div class="date-container"><%= Time.now.strftime("%a, %b %d %Y") %></div>
+  <div class="availability-container">
+
+
   </div>
 
-  <div class="card-content-container">
-    <div class="greater-container">
-      <div class="user-search-container">
-        <!--<input type="text" placeholder="Search" />-->
-      </div>
 
-      <div class="time-container">
+    <!--  <div class="time-container">
         <div class="hours">
           <% (1..24).to_a.map do |el| %>
             <div class="each-hour"><%= el.to_s + ":00" %></div>
           <% end %>
         </div>
       </div>
+    -->
 
-    </div>
-  </div>
 </div>
 
 
