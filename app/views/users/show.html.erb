@@ -4,18 +4,18 @@
   </div>
   <div class="schedule-container">
     <% (0..23).to_a.map do |el| %>
-      <div class="each-hour"><%= el.to_s + ":00" %></div>
+      <div class="each-hour"><span><%= el.to_s + ":00" %></span></div>
     <% end %>
     <div class="user-hours">
       <% get_user_availability_object(current_user).keys.map do |el| %>
-        <div class="hour-block" style=<%=which_color(get_user_availability_object(current_user)[el]) %>><%= get_user_availability_object(current_user)[el] %></div>
+        <div class="hour-block" style=<%=which_color(get_user_availability_object(current_user)[el]) %>></div>
       <% end %>
     </div>
 
     <% @user.friendships.each do |friendship| %>
-      <%= friendship.friend.name %>
-      <% get_user_availability_object(friendship.friend).keys.map do |el|  %>  
-        <div class="hour-block" style=<%=which_color(get_user_availability_object(friendship.friend)[el]) %>><%= get_user_availability_object(friendship.friend)[el] %></div>
+      <!--<%= friendship.friend.name %> to show friend's name-->
+      <% get_user_availability_object(friendship.friend).keys.map do |el|  %>
+        <div class="hour-block" style=<%=which_color(get_user_availability_object(friendship.friend)[el]) %>></div>
       <% end %>
       <br />
 

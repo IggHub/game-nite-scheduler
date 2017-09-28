@@ -26,7 +26,7 @@ module ApplicationHelper
 
   def get_user_availability_array(user)
     return user.availability.where(available_on: Date.today).map{|el| el.available_hour}
-    #if user is available at 1, 3, and 4, then returns [1,3,4] 
+    #if user is available at 1, 3, and 4, then returns [1,3,4]
   end
 
   def which_color(availability_bool)
@@ -36,7 +36,7 @@ module ApplicationHelper
     when false
       return "background:#EC644B"
     else
-      return "background:"#B7BABB"
+      return "background:#B7BABB"
     end
   end
 
