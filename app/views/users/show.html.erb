@@ -2,25 +2,44 @@
   <div class="form-group">
     <input type="text" class="form-control" />
   </div>
-  <div class="schedule-container">
-    <% (0..23).to_a.map do |el| %>
-      <div class="each-hour"><span><%= el.to_s + ":00" %></span></div>
-    <% end %>
-    <div class="user-hours">
-      <% get_user_availability_object(current_user).keys.map do |el| %>
-        <div class="hour-block" style=<%=which_color(get_user_availability_object(current_user)[el]) %>></div>
+
+  <div class="schedule-photo-container">
+    <div class="user-photos-container">
+      <!-- current_user photo -->
+      <img class="user-photo" src=<%= @user.photo %> />
+
+      <!-- current_user friends -->
+      <% @friends.map do |user| %>
+        <img class="user-photo" src=<%= user.photo %> />
       <% end %>
     </div>
 
-    <% @user.friendships.each do |friendship| %>
-      <!--<%= friendship.friend.name %> to show friend's name-->
-      <% get_user_availability_object(friendship.friend).keys.map do |el|  %>
-        <div class="hour-block" style=<%=which_color(get_user_availability_object(friendship.friend)[el]) %>></div>
+    <div class="schedule-container">
+
+      <!-- get hours displayed horizontally on top -->
+      <% (0..23).to_a.map do |el| %>
+        <div class="each-hour"><span><%= el.to_s + ":00" %></span></div>
       <% end %>
-      <br />
+      <!-- end hours display -->
 
-    <% end %>
+      <!-- current_user availability -->
+      <div class="user-hours">
+        <% get_user_availability_object(@user).keys.map do |el| %>
+          <div class="hour-block" style=<%=which_color(get_user_availability_object(@user)[el]) %>></div>
+        <% end %>
+      </div>
+      <!-- end current_user availability -->
 
+      <% @friends.each do |friend| %>
+        <!--<%= friend.name %> to show friend's name-->
+        <% get_user_availability_object(friend).keys.map do |el|  %>
+          <div class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>></div>
+        <% end %>
+        <br />
+
+      <% end %>
+
+    </div>
   </div>
 </div>
 
@@ -100,5 +119,3 @@
     <li><%= link_to user.name, friendships_path(friend_id: user), method: :post %></li>
   <% end %>
 </ul>
-
-Hello, <%= current_user.name %>
