@@ -3,7 +3,7 @@
     <input type="text" class="form-control" />
   </div>
   <div class="schedule-container">
-    <% (1..24).to_a.map do |el| %>
+    <% (0..23).to_a.map do |el| %>
       <div class="each-hour"><%= el.to_s + ":00" %></div>
     <% end %>
     <div class="user-hours">
@@ -11,12 +11,46 @@
         <div class="hour-block" style=<%=which_color(get_user_availability_object(current_user)[el]) %>><%= get_user_availability_object(current_user)[el] %></div>
       <% end %>
     </div>
+
+    <% @user.friendships.each do |friendship| %>
+      <%= friendship.friend.name %>
+      <% get_user_availability_object(friendship.friend).keys.map do |el|  %>  
+        <div class="hour-block" style=<%=which_color(get_user_availability_object(friendship.friend)[el]) %>><%= get_user_availability_object(friendship.friend)[el] %></div>
+      <% end %>
+      <br />
+
+    <% end %>
+
   </div>
 </div>
 
+<h3>Friends:</h3>
+<ul>
+  <% @user.friendships.each do |friendship| %>
+    <li>
+      <%= friendship.friend.name %> - <%= link_to "Remove friend", friendship, method: :delete %>
+      <ul>
+        <% show_available_hour(friendship.friend).keys.each do |available_date, index| %>
+          <li>
+            <%= available_date %>
+            <ul>
+              <% show_available_hour(friendship.friend)[available_date].each do |d| %>
+                <li><%= d.available_hour %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
+
+
 <h2>Availability </h2>
+<!--
 <h1><%= get_user_availability_object(current_user) %></h1>
 <h1><%= get_user_availability_array(current_user) %></h1>
+-->
 <form method="post" action="/availability">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <select name="available_hour" class="custom-select">
@@ -36,28 +70,6 @@
       <ul>
         <% @availabilities[available_date].each do |d| %>
           <li><%= d.available_hour %> - <%= link_to "Remove hour", availability_path(d), method: :delete %></li>
-        <% end %>
-      </ul>
-    </li>
-  <% end %>
-</ul>
-
-<h2>Friends</h2>
-
-<ul>
-  <% @user.friendships.each do |friendship| %>
-    <li>
-      <%= friendship.friend.name %> - <%= link_to "Remove friend", friendship, method: :delete %>
-      <ul>
-        <% show_available_hour(friendship.friend).keys.each do |available_date, index| %>
-          <li>
-            <%= available_date %>
-            <ul>
-              <% show_available_hour(friendship.friend)[available_date].each do |d| %>
-                <li><%= d.available_hour %></li>
-              <% end %>
-            </ul>
-          </li>
         <% end %>
       </ul>
     </li>

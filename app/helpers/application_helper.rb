@@ -20,11 +20,13 @@ module ApplicationHelper
   end
 
   def get_user_availability_object(user)
-    return availability_hours_object(user.availability.where(available_on: Date.today - 2).map{|el| el.available_hour})
+    return availability_hours_object(user.availability.where(available_on: Date.today).map{|el| el.available_hour})
+    #returns {0 => null, 1 => true, 2=> null, ... 23}
   end
 
   def get_user_availability_array(user)
     return user.availability.where(available_on: Date.today).map{|el| el.available_hour}
+    #if user is available at 1, 3, and 4, then returns [1,3,4] 
   end
 
   def which_color(availability_bool)
