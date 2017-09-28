@@ -37,3 +37,20 @@ function myFunction() {
         }
     }
 }
+
+function searchFriend() {
+    // Declare variables
+    var input, filter, userPhotos, userHours, img, i;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    userPhotos = document.getElementById("userPhotos");
+    img = userPhotos.getElementsByTagName('img');
+    userHours = document.getElementById("userHours");
+    hoursDiv = userHours.getElementsByTagName('div');
+    console.log(hoursDiv);
+    for (i = 0; i < img.length; i++){
+
+    }
+    // Loop through all list items, and hide those who don't match the search query
+
+}

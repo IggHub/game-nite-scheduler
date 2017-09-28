@@ -1,10 +1,10 @@
 <div class="main-container">
   <div class="form-group">
-    <input type="text" class="form-control" />
+    <input type="text" id="myInput" onkeyup="searchFriend()" placeholder="Search for names..">
   </div>
 
   <div class="schedule-photo-container">
-    <div class="user-photos-container">
+    <div class="user-photos-container" id="userPhotos">
       <!-- current_user photo -->
       <img class="user-photo" src=<%= @user.photo %> />
 
@@ -23,22 +23,24 @@
       <!-- end hours display -->
 
       <!-- current_user availability -->
-      <div class="user-hours">
-        <% get_user_availability_object(@user).keys.map do |el| %>
-          <div class="hour-block" style=<%=which_color(get_user_availability_object(@user)[el]) %>></div>
+      <div id="userHours" class="user-hours">
+        <div class="hours-row">
+          <% get_user_availability_object(@user).keys.map do |el| %>
+            <div id=<%= @user.name %> class="hour-block" style=<%=which_color(get_user_availability_object(@user)[el]) %>></div>
+          <% end %>
+        </div>
+
+        <!-- end current_user availability -->
+
+        <% @friends.each do |friend| %>
+          <div class="hours-row">
+            <% get_user_availability_object(friend).keys.map do |el|  %>
+              <div id=<%= friend.name%> class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>></div>
+            <% end %>
+          </div>
+          
         <% end %>
       </div>
-      <!-- end current_user availability -->
-
-      <% @friends.each do |friend| %>
-        <!--<%= friend.name %> to show friend's name-->
-        <% get_user_availability_object(friend).keys.map do |el|  %>
-          <div class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>></div>
-        <% end %>
-        <br />
-
-      <% end %>
-
     </div>
   </div>
 </div>
