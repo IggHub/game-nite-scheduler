@@ -46,10 +46,18 @@ function searchFriend() {
     userPhotos = document.getElementById("userPhotos");
     img = userPhotos.getElementsByTagName('img');
     userHours = document.getElementById("userHours");
-    hoursDiv = userHours.getElementsByTagName('div');
-    console.log(hoursDiv);
+    hoursRow = userHours.getElementsByTagName('div');
+    console.log(userHours.children);
     for (i = 0; i < img.length; i++){
-
+      if (img[i].getAttribute('id').toUpperCase().indexOf(filter) > -1) {
+        img[i].style.display = "";
+        userHours.children[i].style.display="";
+        //console.log(filter);
+      } else {
+        img[i].style.display="none";
+        userHours.children[i].style.display="none";
+      }
+      //console.log(img[i].getAttribute('id'))
     }
     // Loop through all list items, and hide those who don't match the search query
 

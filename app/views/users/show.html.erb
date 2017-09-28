@@ -4,14 +4,18 @@
   </div>
 
   <div class="schedule-photo-container">
-    <div class="user-photos-container" id="userPhotos">
-      <!-- current_user photo -->
-      <img class="user-photo" src=<%= @user.photo %> />
+    <div class="user-photos-container">
 
-      <!-- current_user friends -->
-      <% @friends.map do |user| %>
-        <img class="user-photo" src=<%= user.photo %> />
-      <% end %>
+      <!-- current_user photo -->
+      <img id=<%= @user.name %> class="user-photo" src=<%= @user.photo %> />
+
+      <!-- userPhotos for searching -->
+      <div id="userPhotos">
+        <!-- current_user friends -->
+        <% @friends.map do |user| %>
+          <img id=<%= user.name %> class="user-photo" src=<%= user.photo %> />
+        <% end %>
+      </div>
     </div>
 
     <div class="schedule-container">
@@ -23,23 +27,24 @@
       <!-- end hours display -->
 
       <!-- current_user availability -->
-      <div id="userHours" class="user-hours">
-        <div class="hours-row">
+      <div class="user-hours">
+        <div id=<%= @user.name%> class="hours-row">
           <% get_user_availability_object(@user).keys.map do |el| %>
-            <div id=<%= @user.name %> class="hour-block" style=<%=which_color(get_user_availability_object(@user)[el]) %>></div>
+            <div class="hour-block" style=<%=which_color(get_user_availability_object(@user)[el]) %>></div>
           <% end %>
         </div>
 
         <!-- end current_user availability -->
-
+        <div id="userHours">
         <% @friends.each do |friend| %>
-          <div class="hours-row">
+          <div id=<%= friend.name %> class="hours-row">
             <% get_user_availability_object(friend).keys.map do |el|  %>
-              <div id=<%= friend.name%> class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>></div>
+              <div class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>></div>
             <% end %>
           </div>
-          
+
         <% end %>
+      </div>
       </div>
     </div>
   </div>
