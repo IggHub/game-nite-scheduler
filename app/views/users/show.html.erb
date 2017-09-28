@@ -1,6 +1,6 @@
 <div class="main-container">
-  <div class="form-group">
-    <input type="text" id="myInput" onkeyup="searchFriend()" placeholder="Search for names..">
+  <div class="search-bar-container">
+    <input type="text" id="myInput" onkeyup="searchFriend()" placeholder="Enter your friend name...">
   </div>
 
   <div class="schedule-photo-container">
@@ -36,15 +36,14 @@
 
         <!-- end current_user availability -->
         <div id="userHours">
-        <% @friends.each do |friend| %>
-          <div id=<%= friend.name %> class="hours-row">
-            <% get_user_availability_object(friend).keys.map do |el|  %>
-              <div class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>></div>
-            <% end %>
-          </div>
-
-        <% end %>
-      </div>
+          <% @friends.each do |friend| %>
+            <div id=<%= friend.name %> class="hours-row">
+              <% get_user_availability_object(friend).keys.map do |el|  %>
+                <div class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -116,13 +115,5 @@
 <ul>
   <% @users.each do |user| %>
   <li><%= user.name %> (<%= link_to "add user", friendships_path(friend_id: user), method: :post %>)</li>
-  <% end %>
-</ul>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-
-<ul id="myUL">
-  <% @users.each do |user| %>
-    <li><%= link_to user.name, friendships_path(friend_id: user), method: :post %></li>
   <% end %>
 </ul>
