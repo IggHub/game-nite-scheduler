@@ -3,19 +3,20 @@
     <input type="text" class="form-control" />
   </div>
   <div class="schedule-container">
+    <% (1..24).to_a.map do |el| %>
+      <div class="each-hour"><%= el.to_s + ":00" %></div>
+    <% end %>
     <div class="user-hours">
-      <% (1..24).to_a.map do |el| %>
-        <div class="each-hour"><%= el.to_s + ":00" %></div>
+      <% get_user_availability_object(current_user).keys.map do |el| %>
+        <div class="hour-block" style=<%=which_color(get_user_availability_object(current_user)[el]) %>><%= get_user_availability_object(current_user)[el] %></div>
       <% end %>
     </div>
-
-
   </div>
-
 </div>
 
-<h2>Availability <%= user_availability_hours %></h2>
-
+<h2>Availability </h2>
+<h1><%= get_user_availability_object(current_user) %></h1>
+<h1><%= get_user_availability_array(current_user) %></h1>
 <form method="post" action="/availability">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <select name="available_hour" class="custom-select">

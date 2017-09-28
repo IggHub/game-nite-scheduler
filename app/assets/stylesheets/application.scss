@@ -60,6 +60,13 @@ body {
     height: 50px;
     background: tomato;
   }
+  .hour-block {
+    display: inline-block;
+    margin: 25px;
+    width: 100px;
+    background: red;
+    border-radius: 5px;
+  }
 }
 
 
