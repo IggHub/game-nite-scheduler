@@ -24,23 +24,20 @@ function searchFriend() {
     var input, filter, userPhotos, userHours, img, i;
     input = document.getElementById('myInput');
     filter = input.value.toUpperCase();
-    userPhotos = document.getElementById("userPhotos");
-    img = userPhotos.getElementsByTagName('img');
-
-    photoNames = document.getElementsByClassName("photo-names");
+    friendsPhotoContainer = document.getElementsByClassName('friends-photo-container')
     userHours = document.getElementById("userHours");
 
-    console.log(photoNames);
-    for (i = 0; i < img.length; i++){
-      if (img[i].getAttribute('id').toUpperCase().indexOf(filter) > -1) {
-        img[i].style.display = "";
-        photoNames[i].style.display = "";
+    console.log(friendsPhotoContainer);
+    for (i = 0; i < friendsPhotoContainer.length; i++){
+      if (friendsPhotoContainer[i].getAttribute('id').toUpperCase().indexOf(filter) > -1) {
+
+        friendsPhotoContainer[i].style.display = "";
         userHours.children[i].style.display="";
         //console.log(filter);
       } else {
-        img[i].style.display="none";
-        userPhotos.children[1].display="none";
-        photoNames[i].style.display = "none";
+
+
+        friendsPhotoContainer[i].style.display = "none";
         userHours.children[i].style.display="none";
       }
     }
