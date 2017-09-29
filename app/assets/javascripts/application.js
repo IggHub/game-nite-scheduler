@@ -38,8 +38,38 @@ function searchFriend() {
         img[i].style.display="none";
         userHours.children[i].style.display="none";
       }
-      //console.log(img[i].getAttribute('id'))
     }
-    // Loop through all list items, and hide those who don't match the search query
-
 }
+
+$(document).bind("contextmenu", function(event) {
+
+  // Avoid the real one
+  event.preventDefault();
+
+  // Show contextmenu
+  $(".custom-menu").finish().toggle(100).
+
+  // In the right position (the mouse)
+  css({
+    top: event.pageY + "px",
+    left: event.pageX + "px"
+  });
+});
+
+// If the document is clicked somewhere
+$(document).bind("mousedown", function(e) {
+
+  //If the clicked element is not the menu
+  if (!$(e.target).parents(".custom-menu").length > 0) {
+
+    // Hide it
+    $(".custom-menu").hide(100);
+  }
+});
+
+// If the menu element is clicked
+$(".custom-menu li").click(function() {
+
+  // Hide it AFTER the action was triggered
+  $(".custom-menu").hide(100);
+});
