@@ -178,3 +178,14 @@ input#myInput{
 }
 
 /* end custom menu */
+
+/* text CSS */
+.small-text {
+  color: #CCC;
+  font-size: 0.8em;
+  
+  &:hover{
+    text-decoration: none;
+  }
+}
+/* end text CSS */

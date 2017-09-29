@@ -13,15 +13,17 @@
           <div><span><%= @user.name %></div>
         </div>
       </div>
+
       <!-- userPhotos for searching -->
       <div id="userPhotos">
+
         <!-- current_user friends -->
         <% @friends.map do |user| %>
           <div class="photo-container">
             <img id=<%= user.name %> class="user-photo" src=<%= user.photo %> />
-            <div>
+            <div class="photo-names">
               <span><%= user.name %></span>
-              <span><%= link_to "Remove friend", friendship_path(user_id: @user.id, friend_id: user.id), method: :delete %></span>
+              <span><%= link_to "Remove", friendship_path(user_id: @user.id, friend_id: user.id), method: :delete, class: 'small-text' %></span>
             </div>
           </div>
         <% end %>

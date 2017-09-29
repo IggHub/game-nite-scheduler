@@ -26,21 +26,26 @@ function searchFriend() {
     filter = input.value.toUpperCase();
     userPhotos = document.getElementById("userPhotos");
     img = userPhotos.getElementsByTagName('img');
+
+    photoNames = document.getElementsByClassName("photo-names");
     userHours = document.getElementById("userHours");
-    hoursRow = userHours.getElementsByTagName('div');
-    console.log(userHours.children);
+
+    console.log(photoNames);
     for (i = 0; i < img.length; i++){
       if (img[i].getAttribute('id').toUpperCase().indexOf(filter) > -1) {
         img[i].style.display = "";
+        photoNames[i].style.display = "";
         userHours.children[i].style.display="";
         //console.log(filter);
       } else {
         img[i].style.display="none";
+        userPhotos.children[1].display="none";
+        photoNames[i].style.display = "none";
         userHours.children[i].style.display="none";
       }
     }
 }
-
+/*
 $(document).bind("contextmenu", function(event) {
 
   // Avoid the real one
@@ -73,3 +78,4 @@ $(".custom-menu li").click(function() {
   // Hide it AFTER the action was triggered
   $(".custom-menu").hide(100);
 });
+*/
