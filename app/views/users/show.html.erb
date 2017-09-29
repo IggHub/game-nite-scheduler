@@ -8,19 +8,25 @@
 
       <!-- current_user photo -->
       <div>
-        <img id=<%= @user.name %> class="user-photo" src=<%= @user.photo %> /><span><%= @user.id %></span>
+        <div class="photo-container">
+          <img id=<%= @user.name %> class="user-photo" src=<%= @user.photo %> />
+          <div><span><%= @user.name %></div>
+        </div>
       </div>
       <!-- userPhotos for searching -->
       <div id="userPhotos">
         <!-- current_user friends -->
         <% @friends.map do |user| %>
-          <img id=<%= user.name %> class="user-photo" src=<%= user.photo %> />
-          <div>
-            <div><%= user.id %></div>
-            <div><%= link_to "Remove friend", friendship_path(user_id: @user.id, friend_id: user.id), method: :delete %></div>
+          <div class="photo-container">
+            <img id=<%= user.name %> class="user-photo" src=<%= user.photo %> />
+            <div>
+              <span><%= user.name %></span>
+              <span><%= link_to "Remove friend", friendship_path(user_id: @user.id, friend_id: user.id), method: :delete %></span>
+            </div>
           </div>
         <% end %>
       </div>
+
     </div>
 
     <div class="schedule-container">

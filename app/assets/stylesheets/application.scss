@@ -95,16 +95,25 @@ input#myInput{
 .user-photos-container {
   background: #FFF;
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   flex-direction: column;
-  //width: 100px;
-  margin-top: 100px;
+  margin-top: 90px;
 
-  .user-photo {
-    height: 70px;
-    width: 70px;
+  .photo-container {
     margin: 10px;
-    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .user-photo {
+      height: 70px;
+      width: 70px;
+      margin: 10px;
+      border-radius: 50%;
+    }
   }
+
 }
 /* end of user photos CSS */
 
@@ -133,7 +142,7 @@ input#myInput{
   }
   .hour-block {
     display: inline-block;
-    margin: 25px;
+    margin: 30px;
     width: 100px;
     height: 35px;
     background: red;
