@@ -18,6 +18,13 @@ body {
   background: $grey-background;
 }
 
+button {
+  border: 0;
+
+  box-shadow:none;
+  border-radius: 0px;
+}
+
 /* fixed header */
 .nav {
   position: fixed;
@@ -150,6 +157,10 @@ input#myInput{
   }
 }
 
+.horizontal-form {
+  float: left;
+}
+
 /* end of schedule CSS */
 
 /* custom menu */
@@ -183,9 +194,19 @@ input#myInput{
 .small-text {
   color: #CCC;
   font-size: 0.8em;
-  
+
   &:hover{
     text-decoration: none;
   }
 }
 /* end text CSS */
+
+.nowhere-block {
+  height: 100px;
+  width: 100px;
+  background: red;
+  border: 0;
+
+  box-shadow:none;
+  border-radius: 0px;
+}

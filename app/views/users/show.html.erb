@@ -43,7 +43,7 @@
       <div class="user-hours">
         <div id=<%= @user.name%> class="hours-row">
           <% get_user_availability_object(@user).keys.map do |el| %>
-            <div class="hour-block" style=<%=which_color(get_user_availability_object(@user)[el]) %>></div>
+            <button data-color=<%=get_user_availability_object(@user)[el]%> data-user-id=<%= @user.id %> data-hour=<%= el %> class="hour-block" %></button>
           <% end %>
         </div>
 
@@ -52,7 +52,7 @@
           <% @friends.each do |friend| %>
             <div id=<%= friend.name %> class="hours-row">
               <% get_user_availability_object(friend).keys.map do |el|  %>
-                <div class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>></div>
+                <div data-color=<%= which_color(get_user_availability_object(friend)[el]) %>data-hour=<%= el %> data-user-id=<%= friend.id %> class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>><%= el%></div>
               <% end %>
             </div>
           <% end %>
@@ -107,6 +107,16 @@
   </select>
   <button type="submit" class="btn btn-primary">Add Availability</button>
 </form>
+
+
+
+<form method="post" action="/availability">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <button name="available_hour" value=0 type="submit" class="nowhere-block">Add Availability</button>
+</form>
+
+
+
 
 <hr />
 

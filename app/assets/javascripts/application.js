@@ -42,6 +42,22 @@ function searchFriend() {
       }
     }
 }
+
+$(document).ready(function() {
+  $('.hour-block').css('background', 'blue')
+  $('.hour-block').click(function(){
+    var hourData = $(this).data('hour');
+    var userIdData = $(this).data('userId');
+    var colorData = $(this).data('color');
+    console.log("userID: " + userIdData + " hour: " + hourData + " color T/F: " + colorData);
+
+    //changes bg to blue
+    $(this).css('background', 'green');
+  })
+});
+
+
+/* for displaying options on right click */
 /*
 $(document).bind("contextmenu", function(event) {
 
