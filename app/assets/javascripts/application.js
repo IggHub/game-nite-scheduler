@@ -48,7 +48,18 @@ $(document).ready(function() {
       this.className = {
          grey : 'green', green: 'red', red: 'grey'
       }[this.className];
-      console.log(this.className);
+      var hourData = $(this).data('hour');
+      var userIdData = $(this).data('userId');
+      console.log("hourData: " + hourData + " userIdData: " + userIdData);
+      $.ajax({
+        url: '/availability',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          authenticity_token: window._token,
+          available_hour: hourData
+        }
+      })
   });
 
 /*
