@@ -44,7 +44,14 @@ function searchFriend() {
 }
 
 $(document).ready(function() {
-  $('.hour-block').css('background', 'blue')
+  $('.grey, .green, .red').click(function() {
+      this.className = {
+         grey : 'green', green: 'red', red: 'grey'
+      }[this.className];
+      console.log(this.className);
+  });
+
+/*
   $('.hour-block').click(function(){
     var hourData = $(this).data('hour');
     var userIdData = $(this).data('userId');
@@ -52,8 +59,9 @@ $(document).ready(function() {
     console.log("userID: " + userIdData + " hour: " + hourData + " color T/F: " + colorData);
 
     //changes bg to blue
-    $(this).css('background', 'green');
+    //$(this).css('background', 'green');
   })
+*/
 });
 
 

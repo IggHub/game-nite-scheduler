@@ -43,7 +43,7 @@
       <div class="user-hours">
         <div id=<%= @user.name%> class="hours-row">
           <% get_user_availability_object(@user).keys.map do |el| %>
-            <button data-color=<%=get_user_availability_object(@user)[el]%> data-user-id=<%= @user.id %> data-hour=<%= el %> class="hour-block" %></button>
+            <button data-user-id=<%= @user.id %> data-hour=<%= el %> class=<%=which_color(get_user_availability_object(@user)[el])%> %></button>
           <% end %>
         </div>
 
@@ -52,7 +52,7 @@
           <% @friends.each do |friend| %>
             <div id=<%= friend.name %> class="hours-row">
               <% get_user_availability_object(friend).keys.map do |el|  %>
-                <div data-color=<%= which_color(get_user_availability_object(friend)[el]) %>data-hour=<%= el %> data-user-id=<%= friend.id %> class="hour-block" style=<%=which_color(get_user_availability_object(friend)[el]) %>><%= el%></div>
+                <button data-hour=<%= el %> data-user-id=<%= friend.id %> class=<%= which_color(get_user_availability_object(friend)[el]) %> ><%= el%></button>
               <% end %>
             </div>
           <% end %>

@@ -32,11 +32,11 @@ module ApplicationHelper
   def which_color(availability_bool)
     case availability_bool
     when true
-      return "background:#36D7B7"
+      return "green"
     when false
-      return "background:#EC644B"
+      return "red"
     else
-      return "background:#B7BABB"
+      return "grey"
     end
   end
 

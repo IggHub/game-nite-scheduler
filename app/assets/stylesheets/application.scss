@@ -152,7 +152,32 @@ input#myInput{
     margin: 30px;
     width: 100px;
     height: 35px;
-    background: red;
+
+    border-radius: 5px;
+
+  }
+  .grey {
+    background: #B7BABB;
+    display: inline-block;
+    margin: 30px;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+  }
+  .green {
+    background: #36D787;
+    display: inline-block;
+    margin: 30px;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+  }
+  .red {
+    background: #EC644B;
+    display: inline-block;
+    margin: 30px;
+    width: 100px;
+    height: 35px;
     border-radius: 5px;
   }
 }
