@@ -44,13 +44,15 @@ function searchFriend() {
 }
 
 $(document).ready(function() {
+  var counter = 0;
+
   $('.grey, .green, .red').click(function() {
-      this.className = {
-         grey : 'green', green: 'red', red: 'grey'
-      }[this.className];
-      var hourData = $(this).data('hour');
-      var userIdData = $(this).data('userId');
-      console.log("hourData: " + hourData + " userIdData: " + userIdData);
+    var hourData = $(this).data('hour');
+    var userIdData = $(this).data('userId');
+
+    var that = this;
+    console.log("hourData: " + hourData + " userIdData: " + userIdData);
+    if (counter === 0) {
       $.ajax({
         url: '/availability',
         type: 'POST',
@@ -58,8 +60,26 @@ $(document).ready(function() {
         data: {
           authenticity_token: window._token,
           available_hour: hourData
+        },
+        success: function(){
+          that.className = {
+             grey : 'green', green: 'red', red: 'grey'
+          }[that.className];
+          console.log("Success!!!");
+          counter ++;
+        },
+        error: function(v){
+          console.log(v);
+          //show error message here
         }
       })
+    }
+    if (counter === 1) {
+      $.ajax({
+        url: '/availability',
+        type: 'DELETE'
+      })
+    }
   });
 
 /*
