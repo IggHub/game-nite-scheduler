@@ -19,9 +19,16 @@ class AvailabilityController < ApplicationController
   end
 
   def destroy
+    #no availabilityid. However, can we find the availability based on: current_user, date, and available_hour?
     @availability = current_user.availability.find(params[:id])
-    @availability.destroy
-    flash[:notice] = "Availability removed"
-    redirect_to current_user
+    respond_to do |format|
+      if @availability.destroy
+        format.json {render head :no_content}
+        format.html {
+          flash[:notice] = "Availability removed"
+          redirect_to current_user
+        }
+      end
+    end
   end
 end

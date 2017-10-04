@@ -43,7 +43,7 @@
       <div class="user-hours">
         <div id=<%= @user.name%> class="hours-row">
           <% get_user_availability_object(@user).keys.map do |el| %>
-            <button data-user-id=<%= @user.id %> data-hour=<%= el %> class=<%=which_color(get_user_availability_object(@user)[el])%> %></button>
+            <button data-availability-id=<%= show_availability_id(current_user, 1).id %> data-user-id=<%= @user.id %> data-hour=<%= el %> class=<%=which_color(get_user_availability_object(@user)[el])%> %><%=  %></button>
           <% end %>
         </div>
 

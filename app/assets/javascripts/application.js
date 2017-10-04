@@ -49,10 +49,16 @@ $(document).ready(function() {
   $('.grey, .green, .red').click(function() {
     var hourData = $(this).data('hour');
     var userIdData = $(this).data('userId');
-
+    var availabilityIdData = $(this).data('availabilityId');
+    var classNameData = $(this).attr('class');
     var that = this;
-    console.log("hourData: " + hourData + " userIdData: " + userIdData);
-    if (counter === 0) {
+    console.log("hourData: " + hourData + " userIdData: " + userIdData + " className: " + classNameData + "availability: " + availabilityIdData);
+
+    //if className = grey -> do POST create
+    //if className = green -> do DELETE destroy
+    //if className = red -> do ?
+
+    if (classNameData === "grey") {
       $.ajax({
         url: '/availability',
         type: 'POST',
@@ -66,20 +72,36 @@ $(document).ready(function() {
              grey : 'green', green: 'red', red: 'grey'
           }[that.className];
           console.log("Success!!!");
-          counter ++;
+
         },
         error: function(v){
           console.log(v);
           //show error message here
         }
       })
-    }
-    if (counter === 1) {
+    } else if (classNameData === "green") {
       $.ajax({
-        url: '/availability',
-        type: 'DELETE'
+        url: '/availability/' + userIdData,
+        type: 'DELETE',
+        dataType: 'json',
+        data: {
+          authenticity_token: window._token,
+
+        },
+        success: function(){
+          console.log("yay!");
+        },
+        error: function(v){
+          console.log(v);
+        }
       })
+      console.log('click me one more time (Green) and I will delete it!')
+    } else {
+      console.log("Create new schedule");
     }
+
+
+
   });
 
 /*

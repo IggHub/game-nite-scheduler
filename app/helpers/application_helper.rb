@@ -11,6 +11,10 @@ module ApplicationHelper
     return "hello"
   end
 
+  def show_availability_id(user, hour)
+    return Availability.where(user_id: user.id, available_hour: hour, available_on: Date.today)[0]
+  end
+
   def availability_hours_object(arr)
     obj = {}
     24.times {|el| obj[el] = "null"}
